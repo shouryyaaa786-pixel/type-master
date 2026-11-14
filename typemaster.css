@@ -1,0 +1,53 @@
+body{
+    background-color: black;
+}
+.theme{
+    font-family: "Redaction 50", serif;
+    display: flex;
+    justify-content: right;
+    
+}
+
+
+.center-body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    background-color: white;
+    width: 900px;
+    margin-left: 300px;
+    margin-top: 100px;
+    margin-bottom: 100px;
+}
+
+#heading{
+    font-family: "Redaction 50", serif;
+
+}
+
+.input-para{
+    background-color: bisque;
+    width: 700px;
+    height: 250px;
+    font-family: "Redaction 50", serif;
+}
+/* .type-para{
+    background-color:blue;
+    width: 950px;
+    height: 300px;
+} */
+.start{
+    margin-top: 70px;
+    width: 500px;
+    height: 70px;
+    background-color: skyblue;
+    border-radius: 35px;
+    border: none;
+    font-family: "Redaction 50", serif;
+    margin-bottom: 50px;
+}
+.start:hover{
+    background-color: rgba(135, 207, 235, 0.773);
+}
