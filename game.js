@@ -6,7 +6,12 @@ let mis=document.querySelector(".mistake");
 let wordpm=document.querySelector(".wpm");
 let acc=document.querySelector(".accuracy");
 let tmr=document.querySelector(".timer");
+let mbtn=document.querySelector(".mmenu");
+let pse=document.querySelector(".pause");
 
+mbtn.addEventListener("click",function(){
+    window.location.href="typemaster.html";
+})
 text.innerHTML="";
 
 characters.forEach(function(char){
