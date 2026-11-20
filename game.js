@@ -2,6 +2,8 @@ let para=localStorage.getItem("paragraph");
 let characters=para.split("");
 
 let text=document.querySelector(".text");
+let mis=document.querySelector(".mistake");
+let wordpm=document.querySelector(".wpm");
 
 text.innerHTML="";
 
@@ -11,3 +13,62 @@ characters.forEach(function(char){
     span.textContent=char;
     text.appendChild(span);
 });
+
+let curridx=0;
+let mistake=0;
+let charcnt=0
+
+
+let stime=Date.now();
+let ctime=Date.now();
+
+
+
+window.addEventListener("keydown",function(dets){
+// ctime=Date.now();
+//    seconds=((ctime-stime)/1000);
+//    minutes=seconds/60
+
+
+    if(dets.key=="CapsLock"||dets.key=="NumLock"){
+
+    }
+
+    else if(dets.key!=characters[curridx]){
+       
+            mistake++;
+            mis.textContent=mistake;
+        console.log("mistake");
+
+        
+    }
+    
+    else{
+        curridx++;
+        charcnt++;
+
+        // wpm=(charcnt/(5*minutes))
+
+
+    }
+
+    this.setInterval(function(){
+        let second=(Date.now()-stime)/1000;
+        let wpm=(charcnt*60)/(5*second);
+        wordpm.textContent=Math.round(wpm);
+
+    },1000);
+
+
+    // wordpm.textContent=wpm;
+    // console.log(charcnt);
+    // console.log(dets.key);
+     console.log(characters[curridx]);
+    //  console.log(seconds);
+    //  console.log(wpm);
+    
+
+})
+
+
+
