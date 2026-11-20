@@ -4,6 +4,8 @@ let characters=para.split("");
 let text=document.querySelector(".text");
 let mis=document.querySelector(".mistake");
 let wordpm=document.querySelector(".wpm");
+let acc=document.querySelector(".accuracy");
+let tmr=document.querySelector(".timer");
 
 text.innerHTML="";
 
@@ -22,7 +24,7 @@ let charcnt=0
 let stime=Date.now();
 let ctime=Date.now();
 
-
+let accuracy= charcnt===0?100:(charcnt/(charcnt+mistake)*100);
 
 window.addEventListener("keydown",function(dets){
 // ctime=Date.now();
@@ -39,6 +41,7 @@ window.addEventListener("keydown",function(dets){
             mistake++;
             mis.textContent=mistake;
         console.log("mistake");
+        accuracy=(charcnt/(charcnt+mistake)*100);
 
         
     }
@@ -56,10 +59,11 @@ window.addEventListener("keydown",function(dets){
         let second=(Date.now()-stime)/1000;
         let wpm=(charcnt*60)/(5*second);
         wordpm.textContent=Math.round(wpm);
+        tmr.textContent=((Date.now()-stime)/1000).toFixed(1);
 
     },1000);
 
-
+acc.textContent=accuracy.toFixed(2) + "%";
     // wordpm.textContent=wpm;
     // console.log(charcnt);
     // console.log(dets.key);
