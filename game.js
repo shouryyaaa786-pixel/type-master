@@ -12,6 +12,8 @@ let acc=document.querySelector(".accuracy");
 let tmr=document.querySelector(".timer");
 let mbtn=document.querySelector(".mmenu");
 let pse=document.querySelector(".pause");
+let ispaused=false;
+let elapsed=0;
 
 mbtn.addEventListener("click",function(){
     window.location.href="typemaster.html";
@@ -26,7 +28,39 @@ characters.forEach(function(char){
     text.appendChild(span);
 });
 
+function completion(){
 
+}
+
+function pauseTimer(){
+    if(stime===null)return;
+   
+    elapsed+=(Date.now()-stime)/1000;
+    stime=null;
+     clearInterval(timer);
+
+
+    
+}
+
+function resumeTimer(){
+    stime=Date.now();
+    startTimer();
+
+}
+pse.addEventListener("click",function(){
+    if(ispaused===false){
+        ispaused=true;
+        pauseTimer();
+        pse.textContent="resume";
+    }
+    else{
+        ispaused=false;
+        resumeTimer();
+        pse.textContent="pause";
+
+    }
+});
 
 let curridx=0;
 let mistake=0;
@@ -37,26 +71,36 @@ let stime=null;
 
 
 let accuracy= 100
+let timer=0;
+function startTimer(){
+    if(curridx >= characters.length) return;
 
- setInterval(function(){
+    clearInterval(timer);
+  timer=setInterval(function(){
 
     if(stime===null)return;
-        let second=(Date.now()-stime)/1000;
+        let second=elapsed+(Date.now()-stime)/1000;
         if(second>0){
         let wpm=(charcnt*60)/(5*second);
         wordpm.textContent=Math.round(wpm);
         }
-        tmr.textContent=((Date.now()-stime)/1000).toFixed(1);
+        tmr.textContent=second.toFixed(1);
 
-    },1000);
+    },100);
+}
+
+
+
 
 window.addEventListener("keydown",function(dets){
-
-    if(stime===null){
-        stime=Date.now();
-    }
+if(ispaused===true){return}
+   
 
     if(dets.key.length !==1) return;
+    if(stime===null){
+        stime=Date.now();
+        startTimer();
+    };
 
 if(curridx >= characters.length) return;
 // ctime=Date.now();
@@ -79,6 +123,7 @@ if(curridx >= characters.length) return;
     }
     
     else{
+         
         text.children[curridx].style.color="green";
         curridx++;
         charcnt++;
@@ -94,14 +139,16 @@ accuracy=(charcnt/(charcnt+mistake)*100);
 
 acc.textContent=accuracy.toFixed(2) + "%";
     // wordpm.textContent=wpm;
-    // console.log(charcnt);
+    //  console.log(charcnt);
     // console.log(dets.key);
-     console.log(characters[curridx]);
+    //  console.log(characters[curridx]);
+    console.log("Pressed:", JSON.stringify(dets.key));
+console.log("Expected:", JSON.stringify(characters[curridx]));
     //  console.log(seconds);
     //  console.log(wpm);
     
 
-})
+});
 
 
 

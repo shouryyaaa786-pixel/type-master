@@ -10,7 +10,7 @@ btn1.addEventListener("click",function(){
 
 
 function StartGame(){
-    let para=text.value;
+    let para=text.value.trim();
     if(para.trim()===" "){
         alert("Enter a valid paragraph");
         return;
