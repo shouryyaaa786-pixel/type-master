@@ -12,6 +12,7 @@ let acc=document.querySelector(".accuracy");
 let tmr=document.querySelector(".timer");
 let mbtn=document.querySelector(".mmenu");
 let pse=document.querySelector(".pause");
+let rbox=document.querySelector(".result")
 let ispaused=false;
 let elapsed=0;
 
@@ -29,6 +30,24 @@ characters.forEach(function(char){
 });
 
 function completion(){
+
+   
+  
+    pauseTimer();
+    stime=null;
+    ispaused=true;
+    // rbox.hidden=false;
+
+    rbox.textContent=`
+     
+        Test Completed!
+        WPM: ${Math.round(wpm)}
+        Time: ${second.toFixed(1)} seconds
+        Accuracy: ${accuracy.toFixed(2)}%
+        Mistakes: ${mistake}`;
+        pse.disabled=true;
+    console.log("complete");
+
 
 }
 
@@ -65,7 +84,8 @@ pse.addEventListener("click",function(){
 let curridx=0;
 let mistake=0;
 let charcnt=0
-
+let second=0;
+let wpm=0;
 
 let stime=null;
 
@@ -79,9 +99,9 @@ function startTimer(){
   timer=setInterval(function(){
 
     if(stime===null)return;
-        let second=elapsed+(Date.now()-stime)/1000;
+        second=elapsed+(Date.now()-stime)/1000;
         if(second>0){
-        let wpm=(charcnt*60)/(5*second);
+         wpm=(charcnt*60)/(5*second);
         wordpm.textContent=Math.round(wpm);
         }
         tmr.textContent=second.toFixed(1);
@@ -103,6 +123,7 @@ if(ispaused===true){return}
     };
 
 if(curridx >= characters.length) return;
+ 
 // ctime=Date.now();
 //    seconds=((ctime-stime)/1000);
 //    minutes=seconds/60
@@ -127,7 +148,7 @@ if(curridx >= characters.length) return;
         text.children[curridx].style.color="green";
         curridx++;
         charcnt++;
-        
+         
 
 accuracy=(charcnt/(charcnt+mistake)*100);
         // wpm=(charcnt/(5*minutes))
@@ -138,6 +159,11 @@ accuracy=(charcnt/(charcnt+mistake)*100);
    
 
 acc.textContent=accuracy.toFixed(2) + "%";
+
+    if(curridx===characters.length){
+    completion();
+ }
+   
     // wordpm.textContent=wpm;
     //  console.log(charcnt);
     // console.log(dets.key);
