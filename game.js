@@ -168,8 +168,8 @@ acc.textContent=accuracy.toFixed(2) + "%";
     //  console.log(charcnt);
     // console.log(dets.key);
     //  console.log(characters[curridx]);
-    console.log("Pressed:", JSON.stringify(dets.key));
-console.log("Expected:", JSON.stringify(characters[curridx]));
+//     console.log("Pressed:", JSON.stringify(dets.key));
+// console.log("Expected:", JSON.stringify(characters[curridx]));
     //  console.log(seconds);
     //  console.log(wpm);
     
