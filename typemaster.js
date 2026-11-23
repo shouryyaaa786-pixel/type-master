@@ -37,7 +37,7 @@ function formatpara(para){
 function StartGame(){
     let para=formatpara(text.value);
 
-    if(para.trim()===" "){
+    if(para.trim()===""){
         alert("Enter a valid paragraph");
         return;
     }
@@ -45,8 +45,6 @@ function StartGame(){
     window.location.href="game.html";
 
 }
-// if(!para){
-//     window.location.href="typemaster.html";
-// }
+
 btn.addEventListener("click",StartGame);
 

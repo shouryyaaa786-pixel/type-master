@@ -8,7 +8,8 @@ body {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  background-attachment: fixed; /* keeps it full-screen even if the page scrolls */
+  background-attachment: fixed; 
+
 }
 
 .box{
@@ -42,33 +43,27 @@ body {
     flex-direction: row;
     gap: 25px;
     justify-content: center;
+    
 }
 
 .btn{
     display: flex;
     flex-direction: row;
 }
-.mmenu{
+.mmenu,.pause,.nq, .restart{
     border-radius: 20px;
     width: 200px;
     height: 35px;
 }
-.pause{
-     border-radius: 20px;
-    width: 200px;
-    height: 35px;
 
-}
-.nq{
-     border-radius: 20px;
-    width: 200px;
-    height: 35px;
+.result{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;  
+    align-items: center;      
+    text-align: center;
 
-
-}
-.restart{
-     border-radius: 20px;
-    width: 200px;
-    height: 35px;
-
+    margin: auto;             
+    width: 350px;
+    padding: 15px;
 }

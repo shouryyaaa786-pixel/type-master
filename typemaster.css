@@ -6,7 +6,12 @@
 }
 
 body {
-    background-color: rgb(189, 138, 138);
+    
+    background-image: url(background.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 }
 
 .theme {
@@ -15,9 +20,7 @@ body {
     justify-content: right;
 
 }
-/* #heading{
-    background-color: aqua;
-} */
+
 
 select {
     position: absolute;
@@ -39,9 +42,7 @@ select {
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* justify-content: center; */
-    /* min-height: 100vh; */
-
+   
 }
 
 #heading {
@@ -62,6 +63,7 @@ select {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin-top: 150px;
 
 }
 
@@ -77,17 +79,12 @@ select {
 
 }
 
-/* .type-para{
-    background-color:blue;
-    width: 950px;
-    height: 300px;
-} */
 
 #btn {
     margin-top: 70px;
     width: 500px;
     height: 70px;
-    background-color: skyblue;
+    background-color: rgb(116, 199, 220);
     border-radius: 35px;
     border: none;
     font-family: "Redaction 50", serif;
@@ -103,7 +100,7 @@ select {
     margin-top: 70px;
     width: 500px;
     height: 70px;
-    background-color: skyblue;
+    background-color: rgb(116, 199, 220);
     border-radius: 35px;
     border: none;
     font-family: "Redaction 50", serif;
@@ -119,7 +116,7 @@ select {
     margin-top: 70px;
     width: 500px;
     height: 70px;
-    background-color: skyblue;
+    background-color: rgb(116, 199, 220);
     border-radius: 35px;
     border: none;
     font-family: "Redaction 50", serif;
