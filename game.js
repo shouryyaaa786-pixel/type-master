@@ -15,18 +15,53 @@ let pse=document.querySelector(".pause");
 let rbox=document.querySelector(".result")
 let ispaused=false;
 let elapsed=0;
+let nextq=document.querySelector(".nq");
+let re=document.querySelector(".restart")
+const getRandomImage = () => `https://picsum.photos/1920/1080?random=${Date.now()}`;
 
+document.body.style.backgroundImage=`url(${getRandomImage()})`;
+document.body.style.backgroundSize="fill";
+document.body.style.backgroundPosition="";
+document.body.style.backgroundRepeat="no-repeat";
 mbtn.addEventListener("click",function(){
     window.location.href="typemaster.html";
     // localStorage.removeItem("paragraph");
 })
-text.innerHTML="";
+// text.innerHTML="";
+
+function formatpara(para){
+    return para
+    .trim()
+    .replace(/([.,!?;:])\s*/g, "$1 ")
+    .trim();
+}
 
 characters.forEach(function(char){
     let span=document.createElement("span");
 
     span.textContent=char;
     text.appendChild(span);
+});
+
+nextq.addEventListener("click",async function(){
+
+    try{
+        let response= await fetch("https://en.wikipedia.org/api/rest_v1/page/random/summary")
+
+        if(!response.ok){
+            throw new Error("Failed to fetch quote");
+        }
+
+        let data=await response.json();
+        let para = formatpara(data.extract);
+
+        localStorage.setItem("paragraph",para);
+        window.location.reload();
+    }catch(error){
+        console.log(error);
+        alert("unable to get next quote");
+    }
+
 });
 
 function completion(){
@@ -36,7 +71,7 @@ function completion(){
     pauseTimer();
     stime=null;
     ispaused=true;
-    // rbox.hidden=false;
+    rbox.hidden=false;
 
     rbox.textContent=`
      
@@ -102,9 +137,9 @@ function startTimer(){
         second=elapsed+(Date.now()-stime)/1000;
         if(second>0){
          wpm=(charcnt*60)/(5*second);
-        wordpm.textContent=Math.round(wpm);
+        wordpm.textContent="WPM:- "+Math.round(wpm);
         }
-        tmr.textContent=second.toFixed(1);
+        tmr.textContent= "Time:- "+second.toFixed(1);
 
     },100);
 }
@@ -136,7 +171,7 @@ if(curridx >= characters.length) return;
     else if(dets.key!=characters[curridx]){
        
             mistake++;
-            mis.textContent=mistake;
+            mis.textContent="Mistakes:- "+mistake;
         console.log("mistake");
         accuracy=(charcnt/(charcnt+mistake)*100);
 
@@ -145,7 +180,7 @@ if(curridx >= characters.length) return;
     
     else{
          
-        text.children[curridx].style.color="green";
+        text.children[curridx].style.color="white";
         curridx++;
         charcnt++;
          
@@ -158,7 +193,7 @@ accuracy=(charcnt/(charcnt+mistake)*100);
 
    
 
-acc.textContent=accuracy.toFixed(2) + "%";
+acc.textContent="Accuracy:-"+accuracy.toFixed(2) + "%";
 
     if(curridx===characters.length){
     completion();
@@ -175,6 +210,9 @@ acc.textContent=accuracy.toFixed(2) + "%";
     
 
 });
+re.addEventListener("click",function(){
+    window.location.reload();
+})
 
 
 
