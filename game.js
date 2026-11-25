@@ -1,7 +1,7 @@
 let para = localStorage.getItem("paragraph");
 if (!para) {
     
-    window.location.href = "typemaster.html";
+    window.location.href = "index.html";
       alert("please enter a Para");
 }
 let characters = para ? para.split("") : [];
@@ -26,7 +26,7 @@ document.body.style.backgroundSize = "fill";
 document.body.style.backgroundPosition = "";
 document.body.style.backgroundRepeat = "no-repeat";
 mbtn.addEventListener("click", function () {
-    window.location.href = "typemaster.html";
+    window.location.href = "index.html";
 
 })
 
