@@ -47,7 +47,8 @@ select {
 
 #heading {
     font-family: "Redaction 50", serif;
-    font-size: 60px;
+    font-size: 90px;
+
 
 }
 
@@ -56,6 +57,7 @@ select {
     width: 700px;
     height: 250px;
     font-family: "Redaction 50", serif;
+
 }
 
 .low {

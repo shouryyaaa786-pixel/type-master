@@ -110,7 +110,7 @@ pse.addEventListener("click", function () {
     if (ispaused === false) {
         ispaused = true;
         pauseTimer();
-        pse.textContent = "resume";
+        pse.textContent = "Resume";
     }
     else {
         ispaused = false;

@@ -12,9 +12,23 @@ body {
 
 }
 
+
+
 .box{
+
+    color: #D9383A;
+
+    font-family: "Roboto Mono", monospace;
+  font-optical-sizing: auto;
+
+  font-style: normal;
+
+
+
+    font-size: 28px;
+    font-weight: bold;
     background-color: aqua;
-    width: 700px;
+    width: 1300px;
     height: 500px;
     
     background: rgba(255, 255, 255, 0.08);
@@ -24,6 +38,8 @@ body {
     border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 12px;
 
+    
+
    display: flex;
    align-items: center;
    justify-content: center;
@@ -31,6 +47,7 @@ body {
     
 }
 .main{
+    
     display: flex;
     flex-direction: column;
     justify-content: center;
