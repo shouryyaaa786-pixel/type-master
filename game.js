@@ -75,7 +75,8 @@ function completion() {
     ispaused = true;
     rbox.hidden = false;
 
-    rbox.style.color = "white";
+    rbox.style.color = "#D9383A";
+    rbox.style.fontWeight="bold";
 
     rbox.textContent = `
      
